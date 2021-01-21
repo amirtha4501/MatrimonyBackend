@@ -13,6 +13,12 @@ export class Profile extends BaseEntity {
 
     @CreateDateColumn({ type: 'date', default: () => 'CURRENT_TIMESTAMP' })
     date_of_registration: Date;
+
+    @Column({default: false})
+    paid: boolean;
+
+    @Column({default: 0})
+    viewed_contacts: number;
     
     @Column("text", { nullable: true })
     image: string;

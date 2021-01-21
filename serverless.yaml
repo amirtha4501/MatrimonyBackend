@@ -1,0 +1,33 @@
+service: matrimony-backend
+
+useDotenv: true
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-plugin-typescript
+  - serverless-plugin-optimize
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: ap-south-1
+  profile: amirtha4501|esonkalki@gmail.com
+  deploymentBucket:
+    name: serverless-deployment-kalki
+    tags:
+      Purpose: matrimony
+  tags:
+    Purpose: matrimony
+
+
+functions:
+  main:
+    handler: src/serverless.handler
+    events:
+      - http:
+          method: any
+          path: /
+      - http:
+          method: any
+          path: /{proxy+}

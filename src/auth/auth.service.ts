@@ -24,8 +24,6 @@ export class AuthService {
     async signIn(authSignInDto: AuthSigninDto): Promise<{ accessToken:string }> {
         const id = await this.userRepository.signIn(authSignInDto);
         
-        console.log(id, 'AuthServiceid');
-
         if(!id) {
             throw new UnauthorizedException('Invalid Credentials');
         }
